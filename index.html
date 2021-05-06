@@ -4,6 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RPS</title>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
@@ -14,11 +22,30 @@
         -->
     <script>    
             
-        
+        function pickOne() {
+            let answer = prompt("Do you choose rock, paper, or scissors?", "What do you choose?").toLowerCase();
+                switch(answer) {
+                case "rock":
+                    return "rock";
+                    break;
+                case "paper": 
+                    return "paper";
+                    break;
+                case "scissors":
+                    return "scissors";
+                    break;
+                default:
+                    alert ("You must choose rock, paper, or scissors. Please refresh the page.");
+                    break;
+            }
+        }
+
         function computerPlay() {
             let choice = ["rock", "paper", "scissors"];
             return choice[Math.floor(Math.random()*choice.length)];
         }     
+        
+        
         
         function playRound(playerSelection, computerSelection) {
             if (playerSelection == computerSelection) {
@@ -33,11 +60,9 @@
             }
      
         }  
-        
-        
-        let playerSelection = "Rock".toLowerCase();
+      
         let computerSelection = computerPlay();
-
+        let playerSelection = pickOne();
         console.log(playRound(playerSelection, computerSelection));
         console.log (playerSelection, computerSelection);
     </script>
