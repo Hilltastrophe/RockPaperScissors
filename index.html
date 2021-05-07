@@ -21,7 +21,7 @@
         Winner will be announced
         -->
     <script>    
-            
+
         function pickOne() {
             let answer = prompt("Do you choose rock, paper, or scissors?", "What do you choose?").toLowerCase();
                 switch(answer) {
@@ -56,7 +56,7 @@
                 (playerSelection == "paper" && computerSelection == "rock")) {
                 return "You win! " + playerSelection + " beats " + computerSelection;
             } else {
-                return "You loose! " + computerSelection + " beats " + playerSelection;
+                return "You lose! " + computerSelection + " beats " + playerSelection;
             }
      
         }  
@@ -65,6 +65,7 @@
         let playerSelection = pickOne();
         console.log(playRound(playerSelection, computerSelection));
         console.log (playerSelection, computerSelection);
+        
     </script>
 </body>
 </html>
