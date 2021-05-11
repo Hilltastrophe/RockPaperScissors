@@ -22,6 +22,7 @@
         -->
     <script>    
 
+   
         function pickOne() {
             let answer = prompt("Do you choose rock, paper, or scissors?", "What do you choose?").toLowerCase();
                 switch(answer) {
@@ -40,32 +41,50 @@
             }
         }
 
+
         function computerPlay() {
             let choice = ["rock", "paper", "scissors"];
             return choice[Math.floor(Math.random()*choice.length)];
         }     
         
+        let humanScore = 0; 
+        let cpuScore = 0; 
         
-        
+
         function playRound(playerSelection, computerSelection) {
             if (playerSelection == computerSelection) {
-                return "It's a tie! You both chose " + playerSelection;
+                return "It's a tie this round! You both chose " + playerSelection;
             } else if (
                 (playerSelection == "rock" && computerSelection == "scissors") ||
                 (playerSelection == "scissors" && computerSelection == "paper") ||
                 (playerSelection == "paper" && computerSelection == "rock")) {
-                return "You win! " + playerSelection + " beats " + computerSelection;
+                humanScore += 1;
+                return "You win the round, " + playerSelection + " beats " + computerSelection;
             } else {
-                return "You lose! " + computerSelection + " beats " + playerSelection;
+                cpuScore += 1;
+                return "You lose the round, " + computerSelection + " beats " + playerSelection;
             }
      
-        }  
-      
+        }
+        
+    
         let computerSelection = computerPlay();
         let playerSelection = pickOne();
         console.log(playRound(playerSelection, computerSelection));
-        console.log (playerSelection, computerSelection);
-        
+        console.log ("Human ", humanScore, " Computer ", cpuScore);
+     
+        function winner() {
+            if (humanScore = 5) {
+                return "You have won the game!";
+            }
+            if (cpuScore = 5) {
+                return "You have lost the game!";
+            }    
+        } 
+
+    
+
+
     </script>
 </body>
 </html>
