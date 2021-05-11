@@ -21,36 +21,31 @@
         Winner will be announced
         -->
     <script>    
-
-   
-        function pickOne() {
-            let answer = prompt("Do you choose rock, paper, or scissors?", "What do you choose?").toLowerCase();
-                switch(answer) {
-                case "rock":
-                    return "rock";
-                    break;
-                case "paper": 
-                    return "paper";
-                    break;
-                case "scissors":
-                    return "scissors";
-                    break;
-                default:
-                    alert ("You must choose rock, paper, or scissors. Please refresh the page.");
-                    break;
-            }
-        }
-
-
-        function computerPlay() {
-            let choice = ["rock", "paper", "scissors"];
-            return choice[Math.floor(Math.random()*choice.length)];
-        }     
         
         let humanScore = 0; 
         let cpuScore = 0; 
         
+        function computerPlay() {
+            let choice = ["rock", "paper", "scissors"];
+            return choice[Math.floor(Math.random()*choice.length)];
+        }    
+        
+        game();
 
+        function game() {
+            while (humanScore < 5 && cpuScore < 5) {
+                let playerSelection = prompt("Do you choose rock, paper, or scissors?");
+                let computerSelection = computerPlay();
+                playerSelection = playerSelection.toLowerCase();
+                computerSelection = computerSelection.toLowerCase();
+                console.log(playRound(playerSelection, computerSelection));
+                console.log ("Human ", humanScore, " Computer ", cpuScore);
+                console.log("You chose", playerSelection,".", "The computer chose", computerSelection,".");
+            }
+            console.log(winner());
+        }
+  
+        
         function playRound(playerSelection, computerSelection) {
             if (playerSelection == computerSelection) {
                 return "It's a tie this round! You both chose " + playerSelection;
@@ -67,17 +62,12 @@
      
         }
         
-    
-        let computerSelection = computerPlay();
-        let playerSelection = pickOne();
-        console.log(playRound(playerSelection, computerSelection));
-        console.log ("Human ", humanScore, " Computer ", cpuScore);
-     
+
         function winner() {
-            if (humanScore = 5) {
+            if (humanScore == 5) {
                 return "You have won the game!";
             }
-            if (cpuScore = 5) {
+            if (cpuScore == 5) {
                 return "You have lost the game!";
             }    
         } 
