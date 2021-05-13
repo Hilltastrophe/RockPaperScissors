@@ -22,11 +22,11 @@
             return choice[Math.floor(Math.random()*choice.length)];
         }    
         
- game();        
+ game();        /* calls the game */
 
-        function game() {
-            while (humanScore < 5 && cpuScore < 5) {
-                let playerSelection = prompt("Do you choose rock, paper, or scissors?").toLowerCase();
+        function game() { /*As long as the score for either player is less than 5, the game continues*/
+            while (humanScore < 5 && cpuScore < 5) { 
+                let playerSelection = prompt("Do you choose rock, paper, or scissors?").toLowerCase(); /*Makes sure the player input is alway lowercase*/
                 let computerSelection = computerPlay();
                 computerSelection = computerSelection.toLowerCase();
                 console.log("You chose", playerSelection,".", "The computer chose", computerSelection,".");
@@ -37,22 +37,22 @@
         }
   
         
-         function playRound(playerSelection, computerSelection) {
+         function playRound(playerSelection, computerSelection) { /* This is the function that compares the player and computer choice, then adds a score appropriately*/
             if (playerSelection == computerSelection) {
                 return "It's a tie this round! You both chose " + playerSelection;
             } else if (
                 (playerSelection == "rock" && computerSelection == "scissors") ||
                 (playerSelection == "scissors" && computerSelection == "paper") ||
                 (playerSelection == "paper" && computerSelection == "rock")) {
-                humanScore += 1;
+                humanScore += 1; /* Adds +1 to the last score that the player had */
                 return "You win the round, " + playerSelection + " beats " + computerSelection;
-            } else if (
+            } else if ( /* If the player doesn't enter rock paper or scissors, including spelling, an alert tells them to enter rock paper or scissors. */
                 (playerSelection != "rock") && 
                 (playerSelection != "paper") &&
                 (playerSelection != "scissors")) {
 		console.log("You didn't enter a valid choice.");
                 alert("You have to enter rock, paper, or scissors.");
-            } else {
+            } else { /* Since all the other scenarios have been covered, the default can be a computer win if the earlier conditions aren't met. */
                 cpuScore += 1;
                 return "You lose the round, " + computerSelection + " beats " + playerSelection;
             }
@@ -60,7 +60,7 @@
         }
         
 
-        function winner() {
+        function winner() { /* This function is called only when the player or computer has reached 5 points */
             if (humanScore == 5) {
                 return "You have won the game!";
             }
